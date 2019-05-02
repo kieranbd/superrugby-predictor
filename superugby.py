@@ -102,12 +102,15 @@ def away_avg_margin(df, team, date, num_games=5):
     return away_margin_mean
 
 
-def cleanup(op_df):
+def cleanup(op_df, dummies=True):
     '''
     performs all necessary data cleaning, processing and feature engineering
 
     Params:
-        op_df dataframe : dataframe in format as provided by OddsPortal
+        op_df dataframe : dataframe
+            in format as provided by OddsPortal
+        dummies : bool, default True
+            if True, uses one-hot encoding on team name and nationality columns
     '''
 
     # used for assigning countries to teams
@@ -131,7 +134,7 @@ def cleanup(op_df):
                  'Sunwolves': 'JPN'}
 
     # create copy of odds portal dataframe
-    df = op_df
+    df = pd.DataFrame(op_df)
 
     # replace spaces in column names with underscores
     df.columns = df.columns.str.replace(' ', '_')
@@ -166,28 +169,38 @@ def cleanup(op_df):
     df['away_streak'] = away_streaks
     df['away_avg_marg'] = away_avg_margins
 
+    # aggregate odds into single probability variable
+    df['home_win_prob'] = df['Away_Odds'] / (df['Home_Odds'] + df['Away_Odds'])
+
     # add nationalities
     df['home_nationality'] = df['Home_Team'].replace(countries)
     df['away_nationality'] = df['Away_Team'].replace(countries)
 
-    # encode nationalities
-    df = pd.get_dummies(df, prefix='home_country', columns=['home_nationality'])
-    df = pd.get_dummies(df, prefix='away_country', columns=['away_nationality'])
+    if dummies:
+        # encode nationalities
+        df = pd.get_dummies(df, prefix='home_country', columns=['home_nationality'])
+        df = pd.get_dummies(df, prefix='away_country', columns=['away_nationality'])
 
-    # encode team names
-    df = pd.get_dummies(df, prefix='home_team', columns=['Home_Team'])
-    df = pd.get_dummies(df, prefix='away_team', columns=['Away_Team'])
+        # encode team names
+        df = pd.get_dummies(df, prefix='home_team', columns=['Home_Team'])
+        df = pd.get_dummies(df, prefix='away_team', columns=['Away_Team'])
 
-    # aggregate odds into single probability variable
-    df['home_odds'] = df['Away_Odds'] / (df['Home_Odds'] + df['Away_Odds'])
+        # drop irrelevent columns
+        df.drop(['Home_Score', 'Away_Score', 'Home_Odds', 'Draw_Odds', 'Away_Odds',
+                 'Bookmakers_Surveyed', 'home_country_ARG', 'home_country_JPN',
+                 'away_country_ARG', 'away_country_JPN', 'home_team_Cheetahs',
+                 'away_team_Cheetahs', 'home_team_Kings', 'away_team_Kings',
+                 'home_team_Force', 'away_team_Force'],
+                 axis=1,
+                 inplace=True)
 
-    # drop irrelevent columns
-    df.drop(['Home_Score', 'Away_Score', 'Home_Odds', 'Draw_Odds', 'Away_Odds',
-             'Bookmakers_Surveyed', 'home_country_ARG', 'home_country_JPN',
-             'away_country_ARG', 'away_country_JPN', 'home_team_Cheetahs',
-             'away_team_Cheetahs', 'home_team_Kings', 'away_team_Kings',
-             'home_team_Force', 'away_team_Force'],
-             axis=1,
-             inplace=True)
+    else:
+        # create year column for dashboard slider
+        df = df.sort_values('Date', ascending=False)
+        df['Year'] = df['Date'].apply(lambda datetime: datetime.year)
+        # drop irrelevent columns
+        df.drop(['Home_Odds', 'Draw_Odds', 'Away_Odds', 'Bookmakers_Surveyed'],
+                 axis=1,
+                 inplace=True)
 
     return df

@@ -5,40 +5,14 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
+from superugby import cleanup
+
 
 df = pd.read_csv(
     'https://raw.githubusercontent.com/kieranbd/superrugby-predictor/master/' +
     'super_rugby_oddsportal.csv').drop('Play-off Game?', axis=1).dropna()
 
-df['Date'] = pd.to_datetime(df.Date)
-df = df.sort_values('Date', ascending=False)
-df['Year'] = df['Date'].apply(lambda datetime: datetime.year)
-
-df['HomeMargin'] = df['Home Score'] - df['Away Score']
-df['HomeWinProb'] = np.round((1 - df['Home Odds'] / (df['Home Odds'] + df['Away Odds'])),3)
-
-# used for assigning countries to teams
-countries = {'Crusaders': 'NZ',
-             'Chiefs': 'NZ',
-             'Blues': 'NZ',
-             'Hurricanes': 'NZ',
-             'Highlanders': 'NZ',
-             'Bulls': 'SA',
-             'Cheetahs': 'SA',
-             'Kings': 'SA',
-             'Lions': 'SA',
-             'Sharks': 'SA',
-             'Stormers': 'SA',
-             'Brumbies': 'AUS',
-             'Force': 'AUS',
-             'Rebels': 'AUS',
-             'Reds': 'AUS',
-             'Waratahs': 'AUS',
-             'Jaguares': 'ARG',
-             'Sunwolves': 'JPN'}
-
-df['Home Country'] = df['Home Team'].replace(countries)
-df['Away Country'] = df['Away Team'].replace(countries)
+df = cleanup(df, dummies=False)
 
 
 def generate_table(dataframe, max_rows=10):
@@ -91,7 +65,7 @@ app.layout = html.Div(children=[
 
     dcc.Markdown('#### Last 10 fixtures:'),
 
-    generate_table(df[['Date', 'Home Team', 'Away Team', 'Home Score', 'Away Score', 'HomeWinProb']])
+    generate_table(df[['Date', 'Home_Team', 'Away_Team', 'Home_Score', 'Away_Score', 'home_win_prob']])
 ])
 
 @app.callback(
@@ -100,12 +74,12 @@ app.layout = html.Div(children=[
 def update_figure(selected_year):
     filtered_df = df[df.Year <= selected_year]
     traces = []
-    for i in filtered_df['Home Country'].unique():
-        df_by_country = filtered_df[filtered_df['Home Country'] == i]
+    for i in filtered_df['home_nationality'].unique():
+        df_by_country = filtered_df[filtered_df['home_nationality'] == i]
         traces.append(go.Scatter(
-            x=df[df['Home Country'] == i]['HomeWinProb'],
-            y=df[df['Home Country'] == i]['HomeMargin'],
-            text=df[df['Home Country'] == i]['Home Country'],
+            x=df[df['home_nationality'] == i]['home_win_prob'],
+            y=df[df['home_nationality'] == i]['home_margin'],
+            text=df[df['home_nationality'] == i]['home_nationality'],
             mode='markers',
             opacity=0.8,
             marker={
