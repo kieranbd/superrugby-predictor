@@ -1,1 +1,7 @@
-pip freeze > requirements.txt
+dash>=0.42.0
+scikit-learn>=0.20.1
+deap>=1.2.2
+TPOT>=0.9.6
+pandas>=0.23.4
+numpy>=1.15.4
+gunicorn
