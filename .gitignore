@@ -1,3 +1,7 @@
+venv
+*.pyc
+.DS_Store
+.env
 <<<<<<< HEAD
 .ipynb_checkpoints/Icon\r
 .ipynb_checkpoints/Super Rugby Predictor_v1-checkpoint.ipynb
