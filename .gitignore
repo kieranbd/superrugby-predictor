@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 .ipynb_checkpoints/Icon\r
 .ipynb_checkpoints/Super Rugby Predictor_v1-checkpoint.ipynb
 .ipynb_checkpoints/Super_Rugby_Predictor_Current-checkpoint.ipynb
 .ipynb_checkpoints/Super_Rugby_Predictor_James_11_Mar-checkpoint.ipynb
+=======
+*.ipynb_checkpoints
+__pycache__
+>>>>>>> 5040b847cbf7f6df89994283238e47f94e13e6ff
