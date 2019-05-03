@@ -8,7 +8,6 @@ import plotly.graph_objs as go
 from superugby import cleanup
 from model import fit_predict
 
-
 print('loading data from GitHub...')
 raw = pd.read_csv(
     'https://raw.githubusercontent.com/kieranbd/superrugby-predictor/master/' +
