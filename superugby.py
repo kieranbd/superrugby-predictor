@@ -196,11 +196,12 @@ def cleanup(op_df, dummies=True):
 
     else:
         # create year column for dashboard slider
-        df = df.sort_values('Date', ascending=False)
         df['Year'] = df['Date'].apply(lambda datetime: datetime.year)
+        # round the win prob column
+        df['home_win_prob'] = df['home_win_prob'].apply(lambda x: np.round(x,3))
         # drop irrelevent columns
         df.drop(['Home_Odds', 'Draw_Odds', 'Away_Odds', 'Bookmakers_Surveyed'],
                  axis=1,
                  inplace=True)
 
-    return df
+    return df.sort_values('Date', ascending=False)

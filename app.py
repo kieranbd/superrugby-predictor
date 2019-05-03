@@ -6,13 +6,21 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 from superugby import cleanup
+from model import fit_predict
 
 
-df = pd.read_csv(
+print('loading data from GitHub...')
+raw = pd.read_csv(
     'https://raw.githubusercontent.com/kieranbd/superrugby-predictor/master/' +
     'super_rugby_oddsportal.csv').drop('Play-off Game?', axis=1).dropna()
 
-df = cleanup(df, dummies=False)
+print('cleaning data...')
+df = cleanup(raw, dummies=False)
+
+print('fitting model...')
+predictions = fit_predict(raw)
+
+df['predicted_scoreline'] = predictions
 
 
 def generate_table(dataframe, max_rows=10):
@@ -65,7 +73,7 @@ app.layout = html.Div(children=[
 
     dcc.Markdown('#### Last 10 fixtures:'),
 
-    generate_table(df[['Date', 'Home_Team', 'Away_Team', 'Home_Score', 'Away_Score', 'home_win_prob']])
+    generate_table(df[['Date', 'Home_Team', 'Away_Team', 'Home_Score', 'Away_Score', 'home_win_prob', 'predicted_scoreline']])
 ])
 
 @app.callback(

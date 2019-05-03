@@ -13,3 +13,32 @@ Mainly for fun, this is a collaborative effort between friends in their spare ti
   - Results viewer: central view of historic results data with ability to sort and filter
   - Team viewer: view of a single team, displaying current form
   - Forecaster: view of model predictions and how they compare to bookmakers' odds
+
+
+## Git  
+![git logo](https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png)
+
+Since we are pretty new to Git, here are some guidelines:
+
+Avoid pushing directly to Master branch. Instead, checkout a new branch and work there.
+
+**Switching branches**   
+To create a new branch locally:
+```console
+git checkout -b <branchname>
+```
+
+To switch to a remote branch:
+```console
+git checkout --track origin/<branchname>
+```
+
+**Making changes**   
+When you are ready to push changes from local to remote:
+```console
+$ git add <filename>
+
+$ git commit -m 'write a useful commit message here'
+
+$ git push
+```
