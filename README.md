@@ -16,7 +16,7 @@ Mainly for fun, this is a collaborative effort between friends in their spare ti
 
 
 ## Git  
-![git logo](https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png)
+![git logo](http://shijuvarghese.com/wp-content/uploads/2018/03/git-logo.png)
 
 Since we are pretty new to Git, here are some guidelines:
 
