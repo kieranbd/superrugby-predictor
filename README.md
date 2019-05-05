@@ -44,7 +44,7 @@ $ git commit -m 'write a useful commit message here'
 $ git push
 ```
 
-**Staying up to date with remote**
+**Staying up to date with remote**   
 When you return to work on your computer, remember to fetch any changes which might have been added by others while you were away:
 ```console
 $ git fetch
