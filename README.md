@@ -19,9 +19,9 @@ Mainly for fun, this is a collaborative effort between friends in their spare ti
 ## Git  
 ![git logo](http://shijuvarghese.com/wp-content/uploads/2018/03/git-logo.png)
 
-Since we are pretty new to Git, here are some guidelines:
+Since we are pretty new to Git, we will be creating our own guidelines as we go.   
 
-Avoid pushing directly to Master branch. Instead, checkout a new branch and work there.
+> Avoid pushing directly to Master branch. Instead, checkout a new branch and work there.
 
 **Switching branches**   
 To create a new branch locally:
@@ -35,7 +35,14 @@ git checkout --track origin/<branchname>
 ```
 
 **Making changes**   
-When you are ready to push changes from local to remote:
+When you are ready to push changes from local to remote, you can first do a precautionary check to see what your changes are:
+```console
+$ git status
+
+$ git diff <filename>
+```
+
+Then push your changes:
 ```console
 $ git add <filename>
 
@@ -45,9 +52,17 @@ $ git push
 ```
 
 **Staying up to date with remote**   
-When you return to work on your computer, remember to fetch any changes which might have been added by others while you were away:
+When you return to work on your computer, remember to fetch any changes which might have been added by others while you were away.   
+
+The `fetch` command downloads data from the remote repository, but does **not** integrate any changes into your working files:
 ```console
 $ git fetch
 ```
 
-here's a little change
+The `pull` command, on the other hand, tries to merge changes from the remote branch into your local files:
+```console
+$ git pull
+```
+This is essentially a pull request between remote and local version of the same branch.   
+
+Assuming your local repository was completely up to date the last time you worked on it, you should be able to do a pull request without any conflicts. However, if you make some changes **before** pulling from the remote, you will then end up with merge conflicts when you try to push or pull to/from remote. This is why it is a good idea to pull from remote **before** making new changes locally.
