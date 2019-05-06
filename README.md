@@ -66,3 +66,5 @@ $ git pull
 This is essentially a pull request between remote and local version of the same branch.   
 
 Assuming your local repository was completely up to date the last time you worked on it, you should be able to do a pull request without any conflicts. However, if you make some changes **before** pulling from the remote, you will then end up with merge conflicts when you try to push or pull to/from remote. This is why it is a good idea to pull from remote **before** making new changes locally.
+
+Here's a local change
