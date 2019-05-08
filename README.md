@@ -23,7 +23,7 @@ Since we are pretty new to Git, we will be creating our own guidelines as we go.
 
 > Avoid pushing directly to Master branch. Instead, checkout a new branch and work there.
 
-**Switching branches**   
+### Switching branches
 To create a new branch locally:
 ```console
 git checkout -b <branchname>
@@ -34,7 +34,7 @@ To switch to a remote branch:
 git checkout --track origin/<branchname>
 ```
 
-**Making changes**   
+### Making changes
 When you are ready to push changes from local to remote, you can first do a precautionary check to see what your changes are:
 ```console
 $ git status
@@ -51,7 +51,7 @@ $ git commit -m 'write a useful commit message here'
 $ git push
 ```
 
-**Staying up to date with remote**   
+### Staying up to date with remote
 When you return to work on your computer, remember to fetch any changes which might have been added by others while you were away.   
 
 The `fetch` command downloads data from the remote repository, but does **not** integrate any changes into your working files:
@@ -70,3 +70,6 @@ Assuming your local repository was completely up to date the last time you worke
 However, if you make some changes **before** pulling from the remote, you will then end up with merge conflicts when you try to push or pull to/from remote.   
 
 This is why it is a good idea to pull from remote **before** making new changes locally.
+
+## Useful resources:
+  - [Deploying a Python flask app to Heroku](https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0)
