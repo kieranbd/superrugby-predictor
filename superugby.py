@@ -204,4 +204,4 @@ def cleanup(op_df, dummies=True):
                  axis=1,
                  inplace=True)
 
-    return df.sort_values('Date', ascending=False)
+    return df.sort_values('Date', ascending=False).reset_index(drop=True)

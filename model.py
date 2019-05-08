@@ -9,10 +9,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.feature_selection import SelectFwe, f_regression
 from sklearn.linear_model import ElasticNetCV, LassoLarsCV
 from sklearn.pipeline import make_pipeline, make_union
+from sklearn.externals import joblib
 from tpot.builtins import StackingEstimator, ZeroCount
 
 
-def fit_predict(op_df):
+def fit_predict(op_df, retrain=True):
 
     # make copy of dataframe
     df = pd.DataFrame(op_df)
@@ -39,23 +40,33 @@ def fit_predict(op_df):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    pipeline = make_pipeline(
-        ZeroCount(),
-        StackingEstimator(estimator=GradientBoostingRegressor(alpha=0.99,
-                                                              learning_rate=0.01,
-                                                              loss="quantile",
-                                                              max_depth=4,
-                                                              max_features=0.95,
-                                                              min_samples_leaf=17,
-                                                              min_samples_split=8,
-                                                              n_estimators=100,
-                                                              subsample=0.35)),
-        StackingEstimator(estimator=ElasticNetCV(l1_ratio=0.05, tol=0.1, cv=5)),
-        SelectFwe(score_func=f_regression, alpha=0.031),
-        LassoLarsCV(normalize=True, cv=5)
-    )
+    if retrain:
+        # retrain model
+        pipeline = make_pipeline(
+            ZeroCount(),
+            StackingEstimator(estimator=GradientBoostingRegressor(alpha=0.99,
+                                                                  learning_rate=0.01,
+                                                                  loss="quantile",
+                                                                  max_depth=4,
+                                                                  max_features=0.95,
+                                                                  min_samples_leaf=17,
+                                                                  min_samples_split=8,
+                                                                  n_estimators=100,
+                                                                  subsample=0.35)),
+            StackingEstimator(estimator=ElasticNetCV(l1_ratio=0.05, tol=0.1, cv=5)),
+            SelectFwe(score_func=f_regression, alpha=0.031),
+            LassoLarsCV(normalize=True, cv=5)
+        )
 
-    pipeline.fit(X_train, y_train)
+        pipeline.fit(X_train, y_train)
+
+        # save model and bag of words as pickle files
+        joblib.dump(pipeline, 'model.pkl')
+
+    else:
+    # load trained model from pickle file
+        pipeline_pkl = open('model.pkl','rb')
+        pipeline = joblib.load(pipeline_pkl)
 
     predictions = pipeline.predict(df.drop(['Date', 'home_margin', 'home_win'], axis=1).values.astype(np.float64))
 
