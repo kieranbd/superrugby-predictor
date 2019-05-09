@@ -187,10 +187,10 @@ def cleanup(op_df, dummies=True):
 
         # drop irrelevent columns
         df.drop(['Home_Score', 'Away_Score', 'Home_Odds', 'Draw_Odds', 'Away_Odds',
-                 'Bookmakers_Surveyed', 'home_country_ARG', 'home_country_JPN',
-                 'away_country_ARG', 'away_country_JPN', 'home_team_Cheetahs',
-                 'away_team_Cheetahs', 'home_team_Kings', 'away_team_Kings',
-                 'home_team_Force', 'away_team_Force'],
+                    'home_country_ARG', 'home_country_JPN','away_country_ARG',
+                    'away_country_JPN', 'home_team_Cheetahs','away_team_Cheetahs',
+                    'home_team_Kings', 'away_team_Kings',
+                    'home_team_Force', 'away_team_Force'],
                  axis=1,
                  inplace=True)
 
@@ -200,7 +200,7 @@ def cleanup(op_df, dummies=True):
         # round the win prob column
         df['home_win_prob'] = df['home_win_prob'].apply(lambda x: np.round(x,3))
         # drop irrelevent columns
-        df.drop(['Home_Odds', 'Draw_Odds', 'Away_Odds', 'Bookmakers_Surveyed'],
+        df.drop(['Home_Odds', 'Draw_Odds', 'Away_Odds'],
                  axis=1,
                  inplace=True)
 
