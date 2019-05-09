@@ -187,12 +187,10 @@ def cleanup(op_df, dummies=True):
 
         # drop irrelevent columns
         df.drop(['Home_Score', 'Away_Score', 'Home_Odds', 'Draw_Odds', 'Away_Odds',
-                    'home_country_ARG', 'home_country_JPN','away_country_ARG',
-                    'away_country_JPN', 'home_team_Cheetahs','away_team_Cheetahs',
-                    'home_team_Kings', 'away_team_Kings',
-                    'home_team_Force', 'away_team_Force'],
-                 axis=1,
-                 inplace=True)
+        'home_country_ARG', 'home_country_JPN','away_country_ARG',
+        'away_country_JPN', 'home_team_Cheetahs','away_team_Cheetahs',
+        'home_team_Kings', 'away_team_Kings',
+        'home_team_Force', 'away_team_Force'], axis=1, inplace=True)
 
     else:
         # create year column for dashboard slider

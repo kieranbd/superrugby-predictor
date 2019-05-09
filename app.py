@@ -11,8 +11,7 @@ from model import fit_predict
 
 print('loading data from GitHub...')
 raw = pd.read_csv(
-    'https://raw.githubusercontent.com/kieranbd/superrugby-predictor/master/' +
-    'super_rugby_oddsportal.csv'), axis=1).dropna()
+    'https://raw.githubusercontent.com/kieranbd/superrugby-predictor/master/super_rugby_oddsportal.csv').dropna()
 
 print('cleaning data...')
 df = cleanup(raw, dummies=False)
