@@ -11,3 +11,5 @@ venv
 *.ipynb_checkpoints
 __pycache__
 >>>>>>> 5040b847cbf7f6df89994283238e47f94e13e6ff
+geckodriver.log
+ghostdriver.log
