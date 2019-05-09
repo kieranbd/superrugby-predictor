@@ -21,7 +21,6 @@ predictions = fit_predict(raw)
 
 df['predicted_scoreline'] = predictions
 
-
 def generate_table(dataframe, max_rows=10):
     return html.Table(
         # Header

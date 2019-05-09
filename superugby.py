@@ -185,7 +185,7 @@ def cleanup(op_df, dummies=True):
         df = pd.get_dummies(df, prefix='home_team', columns=['Home_Team'])
         df = pd.get_dummies(df, prefix='away_team', columns=['Away_Team'])
 
-        # drop irrelevent columns
+        # drop irrelevant columns
         df.drop(['Home_Score', 'Away_Score', 'Home_Odds', 'Draw_Odds', 'Away_Odds',
         'home_country_ARG', 'home_country_JPN','away_country_ARG',
         'away_country_JPN', 'home_team_Cheetahs','away_team_Cheetahs',
