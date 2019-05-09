@@ -15,7 +15,7 @@ print('cleaning data...')
 df = cleanup(raw, dummies=False)
 
 print('fitting model...')
-predictions = fit_predict(raw, retrain=False)
+predictions = fit_predict(raw)
 
 df['predicted_scoreline'] = predictions
 
