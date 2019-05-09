@@ -60,7 +60,7 @@ def fit_predict(op_df, retrain=True):
 
         pipeline.fit(X_train, y_train)
 
-        # save model and bag of words as pickle files
+        # save model as pickle file
         joblib.dump(pipeline, 'model.pkl')
 
     else:
