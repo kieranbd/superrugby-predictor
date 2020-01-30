@@ -2,7 +2,7 @@
 
 Machine learning approach to predicting score margins for super rugby games, using historic results and bookmakers' odds.
 
-Data is from the website www.aussportsbetting.com, which provides historic match and betting odds data for Super Rugby matches since 2009.
+Data is from the [oddsportal website](https://www.oddsportal.com/rugby-union/world/super-rugby/), which provides historic match and betting odds data for Super Rugby matches since 2009.
 
 Mainly for fun, this is a collaborative effort between friends in their spare time.
 
