@@ -1,11 +1,18 @@
 Date,Home Team,Away Team,Home Score,Away Score,Play-off Game?,Home Odds,Draw Odds,Away Odds,Bookmakers Surveyed
-07-Feb-20,Highlanders,Sharks,0,0,,1.39,22.61,3.01,11
-07-Feb-20,Brumbies,Rebels,0,0,,1.38,23.09,3.08,11
-08-Feb-20,Chiefs,Crusaders,0,0,,1.98,22.72,1.83,10
-08-Feb-20,Waratahs,Blues,0,0,,1.98,20.86,1.85,11
-08-Feb-20,Lions,Reds,0,0,,1.53,23.66,2.50,10
-08-Feb-20,Stormers,Bulls,0,0,,1.27,25.80,3.74,10
-08-Feb-20,Jaguares,Hurricanes,0,0,,1.47,21.88,2.75,10
+14-Feb-20,Blues,Crusaders,0,0,,3.47,24.74,1.31,11
+14-Feb-20,Rebels,Waratahs,0,0,,1.61,20.81,2.35,11
+15-Feb-20,Sunwolves,Chiefs,0,0,,9.49,40.78,1.05,11
+15-Feb-20,Hurricanes,Sharks,0,0,,1.31,24.35,3.41,11
+15-Feb-20,Brumbies,Highlanders,0,0,,1.44,22.14,2.78,11
+15-Feb-20,Lions,Stormers,0,0,,2.62,22.26,1.5,11
+15-Feb-20,Jaguares,Reds,0,0,,1.17,30.03,4.88,10
+07-Feb-20,Highlanders,Sharks,20,42,,1.39,22.61,3.01,11
+07-Feb-20,Brumbies,Rebels,39,26,,1.38,23.09,3.08,11
+08-Feb-20,Chiefs,Crusaders,25,15,,1.98,22.72,1.83,10
+08-Feb-20,Waratahs,Blues,12,32,,1.98,20.86,1.85,11
+08-Feb-20,Lions,Reds,27,20,,1.53,23.66,2.5,10
+08-Feb-20,Stormers,Bulls,13,0,,1.27,25.8,3.74,10
+08-Feb-20,Jaguares,Hurricanes,23,26,,1.47,21.88,2.75,10
 01-Feb-20,Jaguares,Lions,38,8,,1.24,25.47,4.08,10
 01-Feb-20,Stormers,Hurricanes,27,0,,1.74,21.37,2.14,10
 01-Feb-20,Crusaders,Waratahs,43,25,,1.08,35.6,7.45,10
@@ -13,6 +20,7 @@ Date,Home Team,Away Team,Home Score,Away Score,Play-off Game?,Home Odds,Draw Odd
 31-Jan-20,Sharks,Bulls,23,15,,1.52,20.82,2.57,10
 31-Jan-20,Brumbies,Reds,27,24,,1.38,23.08,3.07,10
 31-Jan-20,Blues,Chiefs,29,37,,2.29,22.19,1.64,10
+06-Jul-19,Crusaders,Jaguares,19,3,Y,1.14,28.05,5.8,9
 28-Jun-19,Jaguares,Brumbies,39,7,Y,1.2,26.71,4.66,10
 28-Jun-19,Crusaders,Hurricanes,30,26,Y,1.46,21.93,2.8,10
 21-Jun-19,Crusaders,Highlanders,38,14,Y,1.14,30.28,5.53,10
