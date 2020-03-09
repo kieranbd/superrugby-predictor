@@ -1,8 +1,6 @@
-dash>=0.42.0
-scikit-learn>=0.20.1
-deap>=1.2.2
-TPOT>=0.9.6
-pandas>=1.0.0
-numpy>=1.15.4
+pandas>=1.0.1
+numpy>=1.18.1
+scikit-learn>=0.22.1
+xgboost>=1.0.1
+shap>=0.35.0
 selenium>=3.141.0
-gunicorn
